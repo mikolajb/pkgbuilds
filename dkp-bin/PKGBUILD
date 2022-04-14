@@ -1,0 +1,26 @@
+# Maintainer:  <mbaranowski@d2iq.com>
+pkgname=dkp-bin
+pkgver=2.2.0
+pkgrel=1
+pkgdesc=""
+arch=('x86_64')
+url="https://docs.d2iq.com/dkp/kommander/2.2/cli/dkp/"
+license=(custom)
+groups=()
+depends=()
+checkdepends=(coreutils)
+optdepends=('bash-completion: auto-completion for dkp in Bash',
+'zsh-completions: auto-completion for dkp in ZSH')
+provides=(dkp)
+source=(
+  $pkgname-$pkgver.tar.gz::${DOWNLOAD_URL}/v${pkgver}/dkp_v${pkgver}_linux_amd64.tar.gz
+)
+sha256sums=('9a9d325ca440583facf542bdb191ae3913ffe2e89956e269dcc28a774ef5fc0e')
+
+package() {
+  cd "$srcdir"
+
+  install -Dm755 dkp "$pkgdir/usr/bin/dkp"
+}
+
+# vim:set ts=2 sw=2 et:
